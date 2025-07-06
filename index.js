@@ -11,6 +11,11 @@ program
 
 program
     .argument("<file>")
+    .option("-u")
     .action((file) => {
-        snort(file)
+        const options = program.opts()
+        const unique = 'u' in options ? true : false
+        snort(file, unique)
     })
+
+program.parse(process.argv)
