@@ -12,10 +12,12 @@ program
 program
     .argument("<file>")
     .option("-u")
+    .option("-R")
     .action((file) => {
         const options = program.opts()
         const unique = 'u' in options ? true : false
-        snort(file, unique)
+        const randomFlag = 'R' in options ? true : false
+        snort(file, unique, randomFlag)
     })
 
 program.parse(process.argv)
